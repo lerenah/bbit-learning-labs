@@ -1,0 +1,54 @@
+class security():
+    def __init__(self, name: str) -> None:
+        self.name =  name
+
+    def getName(self) -> str:
+        security = self.name  
+        return security
+        
+%%writefile ../implementations/positionSolution.py 
+#Uncomment line above & run cell to save solution
+#TODO Define class that implements positionInterface & allows for the management of a position
+
+import os
+import sys
+module_path = os.path.abspath(os.path.join('..'))
+if module_path not in sys.path:
+    sys.path.append(module_path)
+
+from implementations.securitySolution import security, securityInterface
+
+class positionInterface(): 
+    pass
+      
+    
+class position():    
+    def __init__(self, security_in, initialPosition: int) -> None:
+        if (isinstance(security_in, (str))):
+            self.security_in = security(security_in)
+
+        else:
+            self.security_in = security_in
+
+        self.initialPosition = initialPosition
+
+
+
+    def getSecurity(self) -> securityInterface:
+        return self.security_in
+
+
+
+    def getPosition(self) -> int:
+        return self.initialPosition
+
+    def setPosition(self, inputValue: int) -> None:
+        self.initialPosition = inputValue; 
+
+
+
+    def addPosition(self, inputValue: int) -> None:
+        self.initialPosition = self.initialPosition + inputValue
+
+        if (self.initialPosition < 0) :
+            raise Exception
