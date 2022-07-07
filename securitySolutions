@@ -1,0 +1,10 @@
+class securityInterface():
+        pass
+
+class security():
+    def __init__(self, name: str) -> None:
+        self.name =  name
+
+    def getName(self) -> str:
+        security = self.name  
+        return security
