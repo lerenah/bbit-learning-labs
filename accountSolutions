@@ -1,0 +1,64 @@
+import os
+import sys
+module_path = os.path.abspath(os.path.join('..'))
+if module_path not in sys.path:
+    sys.path.append(module_path)
+
+from implementations.positionSolution import position, positionInterface
+from typing import Any, Dict, Set, Iterable
+
+class accountInterface():
+    pass
+
+class account():
+    def __init__(self, positions: Set[positionInterface], accountName: str) -> None:
+        self.positions = positions
+        self.accountName = accountName
+        
+
+    def getName(self) -> str:
+        return self.accountName
+        
+
+    def getAllPositions(self) -> Iterable[positionInterface]:
+        return list(self.positions)
+            
+
+    def getPositions(self, securities: Set) -> Dict[Any, positionInterface]:
+        positions = self.getAllPositions()
+        dict_of_securities = {}
+        position_names = [] # ibm tsla, appl
+        # securities = {"ibm 100", 'tsla, 200', 'aapp 300'}
+        for position in positions:
+            position_names.append(position.getSecurity().name)
+            
+        for security in securities: # [position("TEST_SEC_A", 1000),position("TEST_SEC_B", 2000) ]
+            security_name = security.getName()
+            if (security_name in position_names):
+                dict_of_securities[security_name] = 
+            
+        
+        return dict_of_securities
+            
+        
+        #GIVEN
+        """ EXPECTED_NAME = "MY TEST ACCOUNT"
+        EXPECTED_POSITIONS = set()
+        EXPECTED_POSITIONS.add(position("TEST_SEC_A", 1000))
+        EXPECTED_POSITIONS.add(position("TEST_SEC_B", 2000))
+        KEY_LIST = [security("TEST_SEC_A"), "TEST_SEC_B", "TEST_NOT_FOUND_STR", security("TEST_NOT_FOUND_POS")]
+        EXPECTED_MAP = {
+            KEY_LIST[0] : position("TEST_SEC_A", 1000),
+            KEY_LIST[1] : position("TEST_SEC_B", 2000),
+        }
+        print(securities)
+        print(self.positions) """
+        
+
+    def addPositions(self, positions: Set[positionInterface]) -> None:
+        pass
+    
+    def removePositions(self, securities: Set) -> None:
+        pass
+        
+        
